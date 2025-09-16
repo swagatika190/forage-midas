@@ -16,4 +16,12 @@ public class DatabaseConduit {
         userRepository.save(userRecord);
     }
 
+    public UserRecord findById(long id) {
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+    }
+
+    public UserRecord findByName(String name) {
+        return userRepository.findByName(name)
+                .orElseThrow(() -> new RuntimeException("User not found with name: " + name));
+    }
 }
